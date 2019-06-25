@@ -54,24 +54,33 @@ class Calculator extends React.Component {
         return (
             <div>
 
-                <label htmlFor="retirement-income">If you were to retire tomorrow, how much money would you want to enjoy on a monthly basis (after tax)?</label>
-                <input type="number" name="desired-income" value={this.state.desiredIncome} onChange={
-                    this.update('desiredIncome')
-                } />
-                <label htmlFor="current-age">How old are you now?</label>
-                <input type="number" name="current-age" value={this.state.currentAge} onChange={
-                    this.update('currentAge')
-                } />
-                <label htmlFor="retirement-age">How old do you want to be when you retire?</label>
-                <input type="number" name="retirement-age" value={this.state.retirementAge} onChange={
-                    this.update('retirementAge')
-                } />
-                <div onClick={this.calculate}>Show me the money!!</div>
-                <h1>With inflation, you would need ${this.state.inflationAdjustedIncome}/ year</h1>
-                <h1>In order to have enough money in retirement, you need to have a nest egg of at least ${this.state.nestEgg}</h1>
-                <h1>Good luck! Are you sure that you're saving enough money?</h1>
-                <p>*Assuming a 3% inflation rate, 5% withdrawal rate, and 30% tax bracket*</p>
-            </div>
+                <label htmlFor="retirement-income">
+                    <p>If you were going to retire tomorrow, how much income would you want to enjoy on an annual basis (after tax)?
+                    <input type="number" name="desired-income" value={this.state.desiredIncome} onChange={
+                            this.update('desiredIncome')
+                        } />
+                    </p>
+                </label>
+
+                <label htmlFor="current-age">
+                    <p>How old are you now?
+                    <input type="number" name="current-age" value={this.state.currentAge} onChange={
+                            this.update('currentAge')} />
+                    </p>
+                </label>
+                <label htmlFor="retirement-age">
+                    <p>How old do you want to be when you retire?
+                     <input type="number" name="retirement-age" value={this.state.retirementAge} onChange={
+                            this.update('retirementAge')
+                        } />
+                    </p>
+                </label>
+                <span className="button" onClick={this.calculate}>Show me the money!!</span>
+                <h3>With inflation, you would need ${(this.state.inflationAdjustedIncome / 1000).toFixed(0)}K/ year</h3>
+                <h3>You need a nest egg of at least ${(this.state.nestEgg / 1000000).toFixed(1)} M</h3>
+                <h3>Good luck! Are you sure you're saving enough money?</h3>
+                <p>*Assumes a 3% inflation rate, 5% withdrawal rate, and 30% tax bracket*</p>
+            </div >
 
 
         );
